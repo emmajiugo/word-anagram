@@ -17,11 +17,7 @@ public class Protector {
             Arrays.sort(charArray);
             String sortedWord = new String(charArray);
 
-            if (!anagramWords.containsKey(sortedWord)) {
-                anagramWords.put(sortedWord, new ArrayList<>());
-            }
-
-            anagramWords.get(sortedWord).add(word);
+            anagramWords.computeIfAbsent(sortedWord, k -> new ArrayList<>()).add(word);
         }
 
         return anagramWords;
